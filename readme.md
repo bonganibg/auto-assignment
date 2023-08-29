@@ -22,7 +22,7 @@ To get the probability of the review being competed, the current back log plus t
 #### How I Got The Past Review Data 
 I created a program that generate random reviews based the following factors for each reviewer.
 - Expected reviews per hour 
-- Hours with not reviews done (during the working day)
+- Hours with no reviews done (during the working day)
 - Off days
 
 The program runs for every day from the 1st of August to the 4th of September (This returns 4 results for each day of the week). 
