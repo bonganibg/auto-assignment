@@ -3,15 +3,15 @@ from datetime import date, time
 import datetime
 
 class Reviewer():
-    def __init__(self, name: str, courses: List[str], backlog: int):
+    def __init__(self, id: int, name: str, backlog: int):
         self.name = name
-        self.courses = courses
+        self.id = id
         self.backlog = backlog
 
     def __str__(self):
         return f"""
-            {self.name},
-            {self.courses},
+            {self.id},
+            {self.name},            
             {self.backlog}
         """
 
@@ -34,6 +34,24 @@ class PastReview():
             {self.completed_time},
             {self.day_of_week}
         """
+class Review():
+
+    def __init__(self, id: int, reviewer_id: int, course_id: int, sub_id: int, completed_at: str) -> None:
+        self.id = id
+        self.reviewer_id = reviewer_id
+        self.course_id = course_id
+        self.sub_id = sub_id
+        self.completed_at = self._convert_string_to_date(completed_at)
+
+    def _convert_string_to_date(self, date_string: str) -> datetime:
+        return datetime.datetime.strptime(date_string, "%Y-%m-%d %H:%M:%S")
+        
+class Submission():
+
+    def __init__(self, id: int, course_id: int, submission_date: datetime) -> None:
+        self.id = id
+        self.course_id = course_id
+        self.submission_date = submission_date                
 
 class NewReview():
 
