@@ -1,0 +1,33 @@
+CREATE TABLE Reviewer
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE Course
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name VARCHAR(30)
+);
+
+CREATE TABLE Course_Reviewer
+(
+    ReviewerID INTEGER KEY REFERENCES Reviewer(id),
+    CourseID INTEGER KEY REFERENCES Course(id)
+);
+
+CREATE TABLE Submission
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    CourseID INTEGER KEY REFERENCES Course(id),
+    SubmissionDate DATETIME NOT NULL
+);
+
+CREATE TABLE Review
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ReviewerID INTEGER KEY REFERENCES Reviewer(id),
+    CourseID INTEGER KEY REFERENCES Course(id),
+    SubmissionID INTEGER KEY REFERENCES Submission(id),
+    CompletedAt DATETIME
+);
